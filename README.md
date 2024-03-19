@@ -3,12 +3,12 @@
 ![guess_your_weight.gif](images/guess_your_weight.gif)
 
 ## Table of Contents
-## [Overview] (#overview)
-## [Data Understanding] (#data-understanding)
-## [Data Preparation] (#data-preparation)
-## [Modeling] (#modeling)
-## [Evaluation] (#evaluation)
-## [Github Repository and Resources] (#github-repository-and-resources)
+[Overview] (#overview)
+[Data Understanding] (#data-understanding)
+[Data Preparation] (#data-preparation)
+[Modeling] (#modeling)
+[Evaluation] (#evaluation)
+[Github Repository and Resources] (#github-repository-and-resources)
 
 
 ## Overview
