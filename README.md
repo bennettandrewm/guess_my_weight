@@ -37,11 +37,10 @@ Some of the fun here is the variety of methods that could be used. We could pred
 [return to TOC](#table-of-contents-TOC)
 
 ## Evaluation
-
 The metrics used for evaluation will be accuracy, with consideration of correlation and PCA effects. The human body is a mystery, but it could be as simple as calories in vs exercise. Perhaps we only need a handful of variables to be reasonably accurate. The baseline metric for the weight loss classification will be random predictions representing the percentage of the days that weight loss occurred. The baseline metric for weight prediction would be the accuracy of predicting the average weight change. A minimum viable product would be an improvement in accuracy over these baseline accuracy metrics.<br />
 [return to TOC](#table-of-contents-TOC)
 
 ## Github Repository and Resources
-<br />
+
 [return to TOC](#table-of-contents-TOC)
 
