@@ -3,24 +3,22 @@
 ![guess_your_weight.gif](images/guess_your_weight.gif)
 
 ## Table of Contents TOC
-[Overview](#overview)
-[Data Understanding](#data-understanding)
-[Data Preparation](#data-preparation)
-[Modeling](#modeling)
-[Evaluation](#evaluation)
-[Github Repository and Resources](#github-repository-and-resources)
+[Overview](#overview)<br />
+[Data Understanding](#data-understanding)<br />
+[Data Preparation](#data-preparation)<br />
+[Modeling](#modeling)<br />
+[Evaluation](#evaluation)<br />
+[Github Repository and Resources](#github-repository-and-resources)<br />
 
 
 ## Overview
-Health and Wellness is a big business. Specifically, weight loss. We’re all trying because it’s very, very hard. I recently went on my own weight loss journey, losing about 50 lbs in roughly 18 months. Weighing myself every morning, I agonized over every tenth of a lb, recording it in an app on my phone. I realized that losing big chunks of weights starts with small, incremental progress on the scale. But I didn’t stop there. As a data nerd I thought, “let’s record every meal.” So I did that too. I wondered… given all this data I have, could I predict my weight? My watch and phone captures my exercise, sleep, eating, and so much more. There must be trends here. At a minimum, I should be able to predict whether my weight will go up or down from the previous day. So let’s do it.
-
+Health and Wellness is a big business. Specifically, weight loss. We’re all trying because it’s very, very hard. I recently went on my own weight loss journey, losing about 50 lbs in roughly 18 months. Weighing myself every morning, I agonized over every tenth of a lb, recording it in an app on my phone. I realized that losing big chunks of weights starts with small, incremental progress on the scale. But I didn’t stop there. As a data nerd I thought, “let’s record every meal.” So I did that too. I wondered… given all this data I have, could I predict my weight? My watch and phone captures my exercise, sleep, eating, and so much more. There must be trends here. At a minimum, I should be able to predict whether my weight will go up or down from the previous day. So let’s do it.<br />
 [return to TOC](#table-of-contents-TOC)
 
 ## Data Understanding
 I have much (and probably too much) of this data in my iphone and Apple Watch. It contains the weight information, workouts, heart rate, meals - broken down into subcategories (proteins, fats, etc). Most importantly is the weight. That will be the feature that I primarily use for classification.  
 
-Because it’s my data, there’s more clarity about data entry methods. This is more subjective, than a controlled experiment with many participants. I know what data I was diligent about collecting so I should be able to scrub it appropriately. For instance, I didn’t record my fluids consistently - water, tea, coffee. Water consumption is a big part of this so I’ll have to be clear about the gaps in the data.
-
+Because it’s my data, there’s more clarity about data entry methods. This is more subjective, than a controlled experiment with many participants. I know what data I was diligent about collecting so I should be able to scrub it appropriately. For instance, I didn’t record my fluids consistently - water, tea, coffee. Water consumption is a big part of this so I’ll have to be clear about the gaps in the data.<br />
 [return to TOC](#table-of-contents-TOC)
 
 
@@ -31,22 +29,19 @@ There are two major challenges with the pre-processing. The first deals with the
 
 The second is dealing with correlation efforts. For instance, we know that all data related to working out is going to be correlated with eachother. The steps, average heart rate, workout calories, etc will all be correlated to whether I went for a jog that day. Making decisions about which data to use will be a challenge, even with some baseline domain knowledge. There is a treasure trove that may have nothing (or very little) to do with weight loss, like Vitamin A intake. PCA Analysis will be critical without losing some data. I know about health…but I’m no expert. Maybe Vitamin A intake can help/hurt weight loss.
 
-The many visualization efforts will come from making sure the weight data is presented cleanly. A nice, regression line showing weight trends over different periods will be very helpful.
-
+The many visualization efforts will come from making sure the weight data is presented cleanly. A nice, regression line showing weight trends over different periods will be very helpful.<br />
 [return to TOC](#table-of-contents-TOC)
 
 ## Modeling
-Some of the fun here is the variety of methods that could be used. We could predict the actual weight, whether or not my weight will go up, or what the actual differential is going to be. We could use linear regression to predict weight, logistic regression (or any classifier) to determine whether or not I’ll lose weight. The target variable is the actual weight, but we will also create a binomial weight loss classification to determine if I lost weight or not. They’ll also be a time series component to this… for instance, the food and exercise you’ve gotten on the previous 2 days may matter more than just the food you eat that day.
-
+Some of the fun here is the variety of methods that could be used. We could predict the actual weight, whether or not my weight will go up, or what the actual differential is going to be. We could use linear regression to predict weight, logistic regression (or any classifier) to determine whether or not I’ll lose weight. The target variable is the actual weight, but we will also create a binomial weight loss classification to determine if I lost weight or not. They’ll also be a time series component to this… for instance, the food and exercise you’ve gotten on the previous 2 days may matter more than just the food you eat that day.<br />
 [return to TOC](#table-of-contents-TOC)
 
 ## Evaluation
 
-The metrics used for evaluation will be accuracy, with consideration of correlation and PCA effects. The human body is a mystery, but it could be as simple as calories in vs exercise. Perhaps we only need a handful of variables to be reasonably accurate. The baseline metric for the weight loss classification will be random predictions representing the percentage of the days that weight loss occurred. The baseline metric for weight prediction would be the accuracy of predicting the average weight change. A minimum viable product would be an improvement in accuracy over these baseline accuracy metrics.
-
+The metrics used for evaluation will be accuracy, with consideration of correlation and PCA effects. The human body is a mystery, but it could be as simple as calories in vs exercise. Perhaps we only need a handful of variables to be reasonably accurate. The baseline metric for the weight loss classification will be random predictions representing the percentage of the days that weight loss occurred. The baseline metric for weight prediction would be the accuracy of predicting the average weight change. A minimum viable product would be an improvement in accuracy over these baseline accuracy metrics.<br />
 [return to TOC](#table-of-contents-TOC)
 
 ## Github Repository and Resources
-
+<br />
 [return to TOC](#table-of-contents-TOC)
 
