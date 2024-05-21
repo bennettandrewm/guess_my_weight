@@ -9,6 +9,7 @@
 [Modeling](#modeling)<br />
 [Evaluation](#evaluation)<br />
 [Github Repository and Resources](#github-repository-and-resources)<br />
+[Google Colab](https://colab.research.google.com/github/bennettandrewm/guess_my_weight/blob/master/guess_my_weight_notebook.ipynb)<br />
 
 
 ## Overview
