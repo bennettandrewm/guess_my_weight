@@ -4,6 +4,8 @@
 
 ## Table of Contents TOC
 [Overview](#overview)<br />
+[Google Colab Instructions](#google_colab_instructions)<br />
+[Business Case](#business_case)<br />
 [Data Understanding](#data-understanding)<br />
 [Data Preparation](#data-preparation)<br />
 [Modeling](#modeling)<br />
@@ -13,32 +15,80 @@
 
 
 ## Overview
-Health and Wellness is a big business. Specifically, weight loss. We’re all trying because it’s very, very hard. I recently went on my own weight loss journey, losing about 50 lbs in roughly 18 months. Weighing myself every morning, I agonized over every tenth of a lb, recording it in an app on my phone. I realized that losing big chunks of weights starts with small, incremental progress on the scale. But I didn’t stop there. As a data nerd I thought, “let’s record every meal.” So I did that too. I wondered… given all this data I have, could I predict my weight? My watch and phone captures my exercise, sleep, eating, and so much more. There must be trends here. At a minimum, I should be able to predict whether my weight will go up or down from the previous day. So let’s do it.<br />
+Health and Wellness is a $142 billion dollar industry designed to help people managed their weight. This model is intended as a feature to guide users tracking lifestyle data (diet, exercise, sleep) with recommendations to target weight loss.  A machine learning Decision Tree algorithm analyzed captured lifestyle data with emphasis on precision and accuracy metrics. The model determined a Carbohydrate threshold, or Carb Number, which corresponded to next day weight loss or gain. At under 221g (for this user) nearly 74 percent of the next days weigh-in showed a loss. This increased to nearly 82% when acheiving a minimum fiber intake around 14.5 grams as well. Conversely, at over 221g, nearly 66 percent of the weigh-ins showed a gain. This increased to 79 percent when less than 6.9hrs of sleep was recorded in addition to the carb threshold. Based on these findings, it's recommended that these analytics be used to prompt/guide users through out the day to course correct on encourage certain habits. <br />
+[return to TOC](#table-of-contents-TOC)
+
+## Instructions for Google Colab
+To run this notebook, you'll need a Kaggle log-in and web access to Google Colab. Google Colab is a free, user-friendly platform to run software, specifically data models. Kaggle is a website popular with data industry that hosts databases and runs data analytics competition. To access the database for this model, you will need to create a Kaggle account and follow the instructions to download your 'token' and 'key'. This model will prompt you to have that information. <br /> 
+[return to TOC](#table-of-contents-TOC)
+
+## Business Case
+According to a CDC study, the obesity prevalence rate in the US was 42 percent in 2020. The Health and Wellness industry, valued at around $142 billion, has a plethora of systems, apps, and protocols to address this, yet it's still a problem. On a human level, we all know that managing our weight is both critical to health and happiness but also incredible challenging. The average person has dieted over 6 times in their life, according to a survey by the Mayo Clinic. There's a demand among users as well as a basic human earn to feel in control of our health. Creating additional, more intuitive tools to manage weight loss is a vast importance.
+
+In this model, we focus on a small short term goals to determine if daily diet, exercise, and sleep goals can impact your weigh-in the next day. To simplify this task, we'll utilize binary prediction, either weight loss or weight gain, to determine if the sum of these daily habits to determine how they predicted this binary outcome.<br />
 [return to TOC](#table-of-contents-TOC)
 
 ## Data Understanding
-I have much (and probably too much) of this data in my iphone and Apple Watch. It contains the weight information, workouts, heart rate, meals - broken down into subcategories (proteins, fats, etc). Most importantly is the weight. That will be the feature that I primarily use for classification.  
+The data source for this analysis is my personal health information. Over the course of 6 months, I lost approximately 20 lbs. Tracking my calories and weight was a big part of it, as well data captured from my devices (Iphone, Apple Watch). The dataset contains both the information that I logged (daily weigh-ins and food journaling) as well as workouts, heart rate, sleep, etc tracked passively. You can see the data here.
 
-Because it’s my data, there’s more clarity about data entry methods. This is more subjective, than a controlled experiment with many participants. I know what data I was diligent about collecting so I should be able to scrub it appropriately. For instance, I didn’t record my fluids consistently - water, tea, coffee. Water consumption is a big part of this so I’ll have to be clear about the gaps in the data.<br />
+![daily_weigh_in.png](images/daily_weigh_in.png)
+
+Prior to Kaggle upload, the data from the phone was condensed into daily sums. The totals (exercise, sleep, diet) from the day were used as the feature data for prediction <br />
 [return to TOC](#table-of-contents-TOC)
 
-
 ## Data Preparation
-The data is stored in an xml file on my phone. After downloading it into python notebook and digging a little, there are roughly 180 rows of weight entries (approximately 6 months) but it’s not clear how many gaps there are. All of the data is stored as an entry, with time stamps and usually some numeric form. Whether it’s heart rate, weight, caloric info, it’s one numeric entry with an associated units. We’re primarily dealing with ints and floats, all numeric, and we’ll be using daily totals/averages. Because we only have one weigh-in per day, we’re only going to use daily values of other data. So… we know we have approximately 100-180 rows. I can’t say at the moment how many columns, because this will be based on what happens in pre-processing. Which brings me to../.
+The model aims to predict whether a loser lost weight. The wiegh-in data is used to establish whether the user gained or lost weight from the previous day's weigh-in. This was achieved through diffencing, and the data was verified for stationality to ensure there was no correlation with time (beyond the previous day). To understand the data in terms of weight gain days, see the below graph.
 
-There are two major challenges with the pre-processing. The first deals with the privacy of my personal health data. How do I balance reproducibility requirements with privacy concerns? I need to make the dataset publicly available, including all of my pre-processing steps, but I also want to make sure no one can link it back to me, Andrew Q. Bennett (my real middle name doesn’t start with Q… gotcha!!!!). And the initial dataset is large, maybe 40 MB. The approach we’ll use is to perform some pre-processing locally, and then upload to the kaggle site when it’s ready for public consumption. In my jupyter notebook, I will comment out some of this code so that we can see the work, but it won’t affect the code when we press “run”.
+![daily_weigh_in.png](images/daily_weigh_in.png)<br />
 
-The second is dealing with correlation efforts. For instance, we know that all data related to working out is going to be correlated with eachother. The steps, average heart rate, workout calories, etc will all be correlated to whether I went for a jog that day. Making decisions about which data to use will be a challenge, even with some baseline domain knowledge. There is a treasure trove that may have nothing (or very little) to do with weight loss, like Vitamin A intake. PCA Analysis will be critical without losing some data. I know about health…but I’m no expert. Maybe Vitamin A intake can help/hurt weight loss.
+Due to correlation concerns, the feature data we divided into segments based on a data heirarchy.
 
-The many visualization efforts will come from making sure the weight data is presented cleanly. A nice, regression line showing weight trends over different periods will be very helpful.<br />
+![data_hierarchy.png](images/data_heirarchy.png)<br />
+
 [return to TOC](#table-of-contents-TOC)
 
 ## Modeling
-Some of the fun here is the variety of methods that could be used. We could predict the actual weight, whether or not my weight will go up, or what the actual differential is going to be. We could use linear regression to predict weight, logistic regression (or any classifier) to determine whether or not I’ll lose weight. The target variable is the actual weight, but we will also create a binomial weight loss classification to determine if I lost weight or not. They’ll also be a time series component to this… for instance, the food and exercise you’ve gotten on the previous 2 days may matter more than just the food you eat that day.<br />
+In order to select the best model, we surveyed a variety of traditional algorithms and use different feature segments (level 1, level 2, and level 3). KNN, Logistic Regression, Decision Tree, Naive Bayes, SVM, and Neural Network models were scored in a table using evaluation metrics. Of all of the metrics, precision was given the highest preference, second was accuracy. Because we want to predict weight loss, we have a strong emphasis on getting True Positives corret! We want to recommend to users with confidence to lose weight. Accuracy is secondary but still matters, because we are interested in True Negatives, namely, predicting weight gain accurately as well.
+
+Top 5 Results for Precision
+![precision_table.png](images/precision_table.png)<br />
+
+Top 5 Results for Accuracy
+![accuracy_table.png](images/accuracy_table.png)<br />
+
+Based on these results, a Decision Tree model was utilized.<br />
 [return to TOC](#table-of-contents-TOC)
 
 ## Evaluation
-The metrics used for evaluation will be accuracy, with consideration of correlation and PCA effects. The human body is a mystery, but it could be as simple as calories in vs exercise. Perhaps we only need a handful of variables to be reasonably accurate. The baseline metric for the weight loss classification will be random predictions representing the percentage of the days that weight loss occurred. The baseline metric for weight prediction would be the accuracy of predicting the average weight change. A minimum viable product would be an improvement in accuracy over these baseline accuracy metrics.<br />
+The initial model surveyd scored 80% and 78% respectively. Upon inspection of the data, it was clear that feature_2, expressing total carbs was the strongest indicator. To reflect this, model was fine tuned, combining elements from feature_2 and feature_3 segment. This tuning yielded very strong results in the section shown below, while sacrificing some Precision on the test data (75% from 80%). This was a difference of one prediction.<br />
+
+Confusion Matrix for Decision Tree
+![accuracy_table.png](images/accuracy_table.png)<br />
+
+[return to TOC](#table-of-contents-TOC)
+
+## Key Findings
+From the model emerged three key findings:
+
+#### Carbs
+The strongest indicator in the model of potential weight loss. When under the carbohydrate threshold (223 g) the user experienced 74% of their weigh-ins the next day showed weight loss. Vice-Versa, when the user was over the threshold (223g), 67% of the weigh-ins next day showed a gain.
+
+![rec1_pic1.png](images/rec1_pic1.png)<br />
+![rec1_pic2.png](images/rec1_pic2.png)<br />
+
+#### Lack of Sleep
+Lack of sleep may contribute to weight gain. In instances when the user was over the carbohydrate threshold, and slept less than 6.9hrs, almost 80% of the weigh-ins showed a gain. That's a 12% increase.
+
+![rec2.png](images/rec2.png)<br />
+
+#### Fiber
+Having a minimum intake of Fiber could help with weight loss. In instances when the user was under the carbohydrate threshold, and consumed more than 15.75 grams of Fiber, almost 82% of their next day weigh-ins showed a loss. That's an 8% increase over just the carbs.
+
+![rec3.png](images/rec3.png)<br />
+
+
+##  Summary
+To aid in the struggle to lose weight, this model was able to analyze data and create 3 key finding that could be used to help people reach their goals. Through lifestyle analytics, a user can track their eating over the case of the day and receive notifications about how to course correct. The model utilized a database from apps and devices that the user is already using. <br />
 [return to TOC](#table-of-contents-TOC)
 
 ## Github Repository and Resources
