@@ -4,8 +4,8 @@
 
 ## Table of Contents TOC
 [Overview](#overview)<br />
-[Google Colab Instructions](#google_colab_instructions)<br />
-[Business Case](#business_case)<br />
+[Google Colab Instructions](#instructions-for-google-colab)<br />
+[Business Case](#business-case)<br />
 [Data Understanding](#data-understanding)<br />
 [Data Preparation](#data-preparation)<br />
 [Modeling](#modeling)<br />
@@ -37,11 +37,11 @@ Prior to Kaggle upload, the data from the phone was condensed into daily sums. T
 [return to TOC](#table-of-contents-TOC)
 
 ## Data Preparation
-The model aims to predict whether a loser lost weight. The wiegh-in data is used to establish whether the user gained or lost weight from the previous day's weigh-in. This was achieved through diffencing, and the data was verified for stationality to ensure there was no correlation with time (beyond the previous day). To understand the data in terms of weight gain days, see the below graph.
+The model aims to predict whether a loser lost weight. The wiegh-in data is used to establish whether the user gained or lost weight from the previous day's weigh-in. This was achieved through differencing, and the data was verified for stationality to ensure there was no correlation with time (beyond the previous day). To understand the data in terms of weight gain days, see the below graph.
 
-![daily_weigh_in.png](images/daily_weigh_in.png)<br />
+![weight_days.png](images/weight_days.png)<br />
 
-Due to correlation concerns, the feature data we divided into segments based on a data heirarchy.
+Prior to modeling, there were concerns regarding correlation. PCA and Correlations were study. Due to these concerns, the feature data we divided into segments based on a data heirarchy. A schematic can be seen below.
 
 ![data_hierarchy.png](images/data_heirarchy.png)<br />
 
@@ -50,20 +50,17 @@ Due to correlation concerns, the feature data we divided into segments based on 
 ## Modeling
 In order to select the best model, we surveyed a variety of traditional algorithms and use different feature segments (level 1, level 2, and level 3). KNN, Logistic Regression, Decision Tree, Naive Bayes, SVM, and Neural Network models were scored in a table using evaluation metrics. Of all of the metrics, precision was given the highest preference, second was accuracy. Because we want to predict weight loss, we have a strong emphasis on getting True Positives corret! We want to recommend to users with confidence to lose weight. Accuracy is secondary but still matters, because we are interested in True Negatives, namely, predicting weight gain accurately as well.
 
-Top 5 Results for Precision
 ![precision_table.png](images/precision_table.png)<br />
 
-Top 5 Results for Accuracy
 ![accuracy_table.png](images/accuracy_table.png)<br />
 
 Based on these results, a Decision Tree model was utilized.<br />
 [return to TOC](#table-of-contents-TOC)
 
 ## Evaluation
-The initial model surveyd scored 80% and 78% respectively. Upon inspection of the data, it was clear that feature_2, expressing total carbs was the strongest indicator. To reflect this, model was fine tuned, combining elements from feature_2 and feature_3 segment. This tuning yielded very strong results in the section shown below, while sacrificing some Precision on the test data (75% from 80%). This was a difference of one prediction.<br />
+The Decision Tree from the modeling survey in the previous section scored 80% and 78% precision, respectively. Upon inspection of the data, it was clear that feature_2, expressing the Total Carbohydrates consumed, was the strongest indicator. To reflect this, the model was fine tuned, combining elements from feature_2 and feature_3 segments. This tuning yielded key findings in the section shown below, while sacrificing some Precision on the test data (75% from 80%). This was a difference of one prediction. The confusion matrix for the model's test results are shown below.<br />
 
-Confusion Matrix for Decision Tree
-![accuracy_table.png](images/accuracy_table.png)<br />
+![confusion_matrix.png](images/confusion_matrix.png)<br />
 
 [return to TOC](#table-of-contents-TOC)
 
@@ -92,6 +89,21 @@ To aid in the struggle to lose weight, this model was able to analyze data and c
 [return to TOC](#table-of-contents-TOC)
 
 ## Github Repository and Resources
+To execute this project, a github repository is utilized for public viewing and collaboration
+
+You can see the following files stored in the github repository.
+
+Images - Folder containing the image files used in the Notebook, Presentation, and README file
+
+pre-kaggle - contains originally brainstorm notebook
+- brainstorm.ipynb
+
+.gitignore - git ignore file
+
+README the currently file you're reading with descriptions about the coding file
+
+guess_my_weight-6-8.ipynb - Notebook with Python analysis
+
 
 [return to TOC](#table-of-contents-TOC)
 
