@@ -75,9 +75,11 @@ The strongest indicator in the model of potential weight loss. When under the ca
 
 #### Lack of Sleep
 Lack of sleep may contribute to weight gain. In instances when the user was over the carbohydrate threshold, and slept less than 6.9hrs, almost 80% of the weigh-ins showed a gain. That's a 12% increase.
+![rec2.png](images/rec2.png)<br />
 
 #### Fiber
 Having a minimum intake of Fiber could help with weight loss. In instances when the user was under the carbohydrate threshold, and consumed more than 15.75 grams of Fiber, almost 82% of their next day weigh-ins showed a loss. That's an 8% increase over just the carbs.
+![rec3.png](images/rec3.png)<br />
 
 ##  Summary
 To aid in the struggle to lose weight, this model was able to analyze data and create 3 key finding that could be used to help people reach their goals. Through lifestyle analytics, a user can track their eating over the case of the day and receive notifications about how to course correct. The model utilized a database from apps and devices that the user is already using. <br />
