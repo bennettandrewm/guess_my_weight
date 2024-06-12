@@ -76,12 +76,8 @@ The strongest indicator in the model of potential weight loss. When under the ca
 #### Lack of Sleep
 Lack of sleep may contribute to weight gain. In instances when the user was over the carbohydrate threshold, and slept less than 6.9hrs, almost 80% of the weigh-ins showed a gain. That's a 12% increase.
 
-![rec2.png](images/rec2.png)<br />
-
 #### Fiber
 Having a minimum intake of Fiber could help with weight loss. In instances when the user was under the carbohydrate threshold, and consumed more than 15.75 grams of Fiber, almost 82% of their next day weigh-ins showed a loss. That's an 8% increase over just the carbs.
-
-![rec3.png](images/rec3.png)<br />
 
 
 ##  Summary
@@ -100,10 +96,12 @@ pre-kaggle - contains originally brainstorm notebook
 
 .gitignore - git ignore file
 
-README the currently file you're reading with descriptions about the coding file
+README - the currently file you're reading with descriptions about the coding file
 
+guess_my_weight.ipynb - (previous draft) old Notebook with Python analysis
 guess_my_weight-6-8.ipynb - Notebook with Python analysis
-
+guess_my_weight_notebook.ipynb - (previous draft) old Notebook with Python analysis
+guess_my_weight_revised.ipynb - (previous draft) old Notebook with Python analysis
 
 [return to TOC](#table-of-contents-TOC)
 
