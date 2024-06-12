@@ -11,7 +11,7 @@
 [Modeling](#modeling)<br />
 [Evaluation](#evaluation)<br />
 [Github Repository and Resources](#github-repository-and-resources)<br />
-[Google Colab](https://colab.research.google.com/github/bennettandrewm/guess_my_weight/blob/master/guess_my_weight_notebook.ipynb)<br />
+[Google Colab](https://colab.research.google.com/github/bennettandrewm/guess_my_weight/blob/master/guess_my_weight_notebook-6-8.ipynb)<br />
 
 
 ## Overview
@@ -93,13 +93,12 @@ To execute this project, a github repository is utilized for public viewing and 
 You can see the following files stored in the github repository.
 
 Images - Folder containing the image files used in the Notebook, Presentation, and README file
-
 pre-kaggle - contains originally brainstorm notebook
 - brainstorm.ipynb
 
 .gitignore - git ignore file
 
-README the currently file you're reading with descriptions about the coding file
+README.md the currently file you're reading with descriptions about the coding file
 
 guess_my_weight-6-8.ipynb - Notebook with Python analysis
 
