@@ -130,21 +130,21 @@ was over the threshold (223g), 67% of the weigh-ins next day showed a gain.
 
 <img src="images/rec1_pic_1.png"/>
 
-<img src="images/rec1_pic_2.png"/>
+<img src="images/rec1_pic_2.jpeg"/>
 
 #### Lack of Sleep
 
 Lack of sleep may contribute to weight gain. In instances when the user was over the carbohydrate
 threshold, and slept less than 6.9hrs, almost 80% of the weigh-ins showed a gain. That's a 12% increase.
 
-<img src="images/rec2.png"/>
+<img src="images/rec2.jpeg"/>
 
 #### Fiber
 
 Fiber may assist in weight loss. In instances when the user was under the carbohydrate
 threshold, but consumed at least 14.75g of Fiber, the occurence of weight loss increased to nearly 82% of the weigh-ins showed a gain. That's an 8% increase.
 
-<img src="images/rec3.png"/>
+<img src="images/rec3.jpeg"/>
 
 <br />[return to TOC](#table-of-contents-TOC)
 
