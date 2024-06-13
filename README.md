@@ -1,18 +1,20 @@
 # Guess My Weight
 
-<img src="images/guess_your_weight.gif" width="200" />
+<p align="center">
+<img src="images/guess_your_weight.gif" width="400" height="400" />
+</p>
 
-## Table of Contents TOC
-### [Overview](#overview)
-### [Google Colab Instruction](#google-colab-instructions)
-### [Business Case](#business-case)
-### [Data Understanding](#data-understanding)
-### [Data Preparation](#data-preparation)
-### [Modeling](#modeling)
-### [Evaluation](#evaluation)
-### [Key Findings](#evaluation
-### [Summary](#summary)
-### [Github Repository](#github-repository)
+[Table of Contents TOC]
+[Overview](#overview)<br />
+[Google Colab Instruction](#google-colab-instructions)<br />
+[Business Case](#business-case)<br />
+[Data Understanding](#data-understanding)<br />
+[Data Preparation](#data-preparation)<br />
+[Modeling](#modeling)<br />
+[Evaluation](#evaluation)<br />
+[Key Findings](#evaluation)br />
+[Summary](#summary)<br />
+[Github Repository](#github-repository)<br />
 
 
 ## Overview
@@ -27,7 +29,7 @@ addition to the carb threshold. Based on these findings, it's recommended that t
 prompt/guide users through out the day to course correct on encourage certain habits.
 [return to TOC](#table-of-contents)
 
-## Instructions for Google Colab
+## Google Colab Instructions
 To run this notebook, you'll need a Kaggle log-in and web access to [Google Colab and link to this notebook](https://colab.research.google.com/github/bennettandrewm/guess_my_weight/blob/master/guess_my_weight_notebook-6-8.ipynb). Google Colab is a free, user-friendly platform to run software, specifically data models. Kaggle is a [website](https://www.kaggle.com/) popular with the data industry that hosts databases and runs data analytics competition. To access the [database](https://www.kaggle.com/datasets/andrewmbennett/guess-my-weight-4-25) for this model, you
 will need to create a Kaggle account and follow the instructions to download your 'token' and 'key'. This
 model will prompt you to have that information.
@@ -59,7 +61,9 @@ The data can be found in the following files:
 
 Over the course of 6 months, I lost approximately 20 lbs. Tracking my calories and weight was a big part of it, as well data captured from my devices passively, such as workouts, heart rate, sleep, etc. You can see the weigh-in data here.
 
-<img src="images/daily_weigh_in.png" width="200" />
+<p align="center">
+<img src="images/daily_weigh_in.png" width="400" height="400" />
+</p>
 
 [return to TOC](#table-of-contents)
 
@@ -70,13 +74,17 @@ data was verified for stationality to ensure there was no correlation with time 
 understand the data in terms of weight gain days, see the below graph.
 [return to TOC](#table-of-contents)
 
-<img src="images/weight_days.png" width="200" />
+<p align="center">
+<img src="images/weight_days.png" width="400" height="400" />
+</p>
 
 Prior to modeling, there were concerns regarding correlation. PCA and Correlations were study. Due to these
 concerns, the feature data we divided into segments based on a data heirarchy. A schematic can be seen
 below.
 
-<img src="images/data_heirarchy.png" width="200" />
+<p align="center">
+<img src="images/data_heirarchy.png" width="400" height="400" />
+</p>
 
 ## Modeling
 In order to select the best model, we surveyed a variety of traditional algorithms and use different feature
@@ -87,9 +95,13 @@ strong emphasis on getting True Positives corret! We want to recommend to users 
 weight. Accuracy is secondary but still matters, because we are interested in True Negatives, namely,
 predicting weight gain accurately as well.
 
-<img src="images/precision_table.png" width="200" />
+<p align="center">
+<img src="images/precision_table.png" width="400" height="400"/>
+</p>
 
-<img src="images/precision_table.png" width="200" />
+<p align="center">
+<img src="images/precision_table.png" width="400" height="400"/>
+</p>
 
 Based on these results, a Decision Tree model was utilized.
 return to TOC
@@ -104,7 +116,9 @@ feature_2 and feature_3 segments. This tuning yielded key findings in the sectio
 sacrificing some Precision on the test data (75% from 80%). This was a difference of one prediction. The
 confusion matrix for the model's test results are shown below.
 
-<img src="images/confusion_matrix.png" width="200" />
+<p align="center">
+<img src="images/confusion_matrix.png" width="400" height="400"/>
+</p>
 
 [return to TOC](#table-of-contents)
 
@@ -116,23 +130,23 @@ The strongest indicator in the model of potential weight loss. When under the ca
 g) the user experienced 74% of their weigh-ins the next day showed weight loss. Vice-Versa, when the user
 was over the threshold (223g), 67% of the weigh-ins next day showed a gain.
 
-<img src="images/rec1_pic1.png" width="200" />
+<img src="images/rec1_pic1.png" width="400" height="400"/>
 
-<img src="images/rec1_pic2.png" width="200" />
+<img src="images/rec1_pic2.png" width="400" height="400"/>
 
 #### Lack of Sleep
 
 Lack of sleep may contribute to weight gain. In instances when the user was over the carbohydrate
 threshold, and slept less than 6.9hrs, almost 80% of the weigh-ins showed a gain. That's a 12% increase.
 
-<img src="images/rec_2.png" width="200" />
+<img src="images/rec_2.png" width="400" height="400"/>
 
 #### Fiber
 
 Fiber may assist in weight loss. In instances when the user was under the carbohydrate
 threshold, but consumed at least 14.75g of Fiber, the occurence of weight loss increased to nearly 82% of the weigh-ins showed a gain. That's an 8% increase.
 
-<img src="images/rec_3.png" width="200" />
+<img src="images/rec_3.png" width="400" height="400"/>
 
 #### [return to TOC](#table-of-contents)
 
