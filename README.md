@@ -2,36 +2,185 @@
 
 <img src="images/guess_your_weight.gif" width="200" />
 
-You pick the movie, I'll choose the restaurant...
+## Table of Contents TOC
+### [Overview](#overview)
+### [Google Colab Instruction](#google-colab-instructions)
+### [Business Case](#business-case)
+### [Data Understanding](#data-understanding)
+### [Data Preparation](#data-preparation)
+### [Modeling](#modeling)
+### [Evaluation](#evaluation)
+### [Key Findings](#evaluation
+### [Summary](#summary)
+### [Github Repository](#github-repository)
 
-## 1. Overview
 
-Choosing movies can be a stressful, high-stakes endeavor for anyone. And while users wallow in indecision, the media/streaming platforms lose engagement.Advertisers and profits follow from there. Fortunately, this program is here to help. It provides movie recommendations for any new user, based on their movie preferences. The program asks the user to rate five random movies from the nearly 10,000 in the [MovieLens](https://grouplens.org/datasets/movielens/) database. Based on the ratings, the program utilizes a user-based collaborative filtering model from [surprise](https://surpriselib.com/) to provide five recommendations.
+## Overview
+Health and Wellness is a $142 billion dollar industry designed to help people managed their weight. This
+model is intended as a feature to guide users tracking lifestyle data (diet, exercise, sleep) with
+recommendations to target weight loss. A machine learning Decision Tree algorithm analyzed captured lifestyle data and fine-tuned to consider precision and accuracy metrics. The model determined a Carbohydrate
+threshold, or Carb Number, which corresponded to next day weight loss or gain. At under 221g (for this
+user) nearly 74 percent of the next days weigh-in showed a loss. This increased to nearly 82% when
+acheiving a minimum fiber intake around 14.5 grams as well. Conversely, at over 221g, nearly 66 percent of
+the weigh-ins showed a gain. This increased to 79 percent when less than 6.9 hrs of sleep was recorded in
+addition to the carb threshold. Based on these findings, it's recommended that these analytics be used to
+prompt/guide users through out the day to course correct on encourage certain habits.
+[return to TOC](#table-of-contents)
 
-## 2. Business Case
+## Instructions for Google Colab
+To run this notebook, you'll need a Kaggle log-in and web access to [Google Colab and link to this notebook](https://colab.research.google.com/github/bennettandrewm/guess_my_weight/blob/master/guess_my_weight_notebook-6-8.ipynb). Google Colab is a free, user-friendly platform to run software, specifically data models. Kaggle is a [website](https://www.kaggle.com/) popular with the data industry that hosts databases and runs data analytics competition. To access the [database](https://www.kaggle.com/datasets/andrewmbennett/guess-my-weight-4-25) for this model, you
+will need to create a Kaggle account and follow the instructions to download your 'token' and 'key'. This
+model will prompt you to have that information.
+[return to TOC](#table-of-contents)
 
-With the vast entertainment options available, low engagement and user churn in any social media or streaming service can hurt profit. Considering that 20% of adults are indecisive and 67% of relationship agreements never get resolved, picking a movie can be a daunting tas. This high-stakes gambit fuels decision paralysis and disengagement. Luckily, machine learning can relieve indecision by providing recommendations for any user, based on their preferences.
+
+## Business Case
+According to a CDC study, the obesity prevalence rate in the US was 42 percent in 2020. The Health and
+Wellness industry, valued at around $142 billion, has a plethora of systems, apps, and protocols to address
+this, yet it's still a problem. On a human level, we all know that managing our weight is both critical to health
+and happiness but also incredible challenging. The average person has dieted over 6 times in their life,
+according to a survey by the Mayo Clinic. There's a demand among users as well as a basic human earn to
+feel in control of our health. Creating additional, more intuitive tools to manage weight loss is a vast
+importance.
+
+In this model, we focus on a small short term goals to determine if daily diet, exercise, and sleep goals can
+impact your weigh-in the next day. To simplify this task, we'll utilize binary prediction, either weight loss or
+weight gain, to determine if the sum of these daily habits to determine how they predicted this binary
+outcome.
+[return to TOC](#table-of-contents)
+
+## Data Understanding
+The data source for this analysis is my personal health information. That data was download from my smart device to a local setting, where it was pre-processed, formatted, and uploaded to [Kaggle](https://www.kaggle.com/datasets/andrewmbennett/guess-my-weight-4-25) to made available pubically. You can also find it in this github repository. Follow [instructions](#github-repository) below. 
+
+The data can be found in the following files:
+
+* [Kaggle](https://www.kaggle.com/datasets/andrewmbennett/guess-my-weight-4-25)
+* [merge_health_4_25.csv](content/guess-my-weight-4-25/merge_health_4_25.csv)
+
+Over the course of 6 months, I lost approximately 20 lbs. Tracking my calories and weight was a big part of it, as well data captured from my devices passively, such as workouts, heart rate, sleep, etc. You can see the weigh-in data here.
+
+<img src="images/daily_weigh_in.png" width="200" />
+
+[return to TOC](#table-of-contents)
+
+## Data Preparation
+The model aims to predict whether a loser lost weight. The wiegh-in data is used to establish whether the
+user gained or lost weight from the previous day's weigh-in. This was achieved through differencing, and the
+data was verified for stationality to ensure there was no correlation with time (beyond the previous day). To
+understand the data in terms of weight gain days, see the below graph.
+[return to TOC](#table-of-contents)
+
+<img src="images/weight_days.png" width="200" />
+
+Prior to modeling, there were concerns regarding correlation. PCA and Correlations were study. Due to these
+concerns, the feature data we divided into segments based on a data heirarchy. A schematic can be seen
+below.
+
+<img src="images/data_heirarchy.png" width="200" />
+
+## Modeling
+In order to select the best model, we surveyed a variety of traditional algorithms and use different feature
+segments (level 1, level 2, and level 3). KNN, Logistic Regression, Decision Tree, Naive Bayes, SVM, and
+Neural Network models were scored in a table using evaluation metrics. Of all of the metrics, precision was
+given the highest preference, second was accuracy. Because we want to predict weight loss, we have a
+strong emphasis on getting True Positives corret! We want to recommend to users with confidence to lose
+weight. Accuracy is secondary but still matters, because we are interested in True Negatives, namely,
+predicting weight gain accurately as well.
+
+<img src="images/precision_table.png" width="200" />
+
+<img src="images/precision_table.png" width="200" />
+
+Based on these results, a Decision Tree model was utilized.
+return to TOC
+
+[return to TOC](#table-of-contents)
+
+## Evaluation
+The Decision Tree from the modeling survey in the previous section scored 80% and 78% precision,
+respectively. Upon inspection of the data, it was clear that feature_2, expressing the Total Carbohydrates
+consumed, was the strongest indicator. To reflect this, the model was fine tuned, combining elements from
+feature_2 and feature_3 segments. This tuning yielded key findings in the section shown below, while
+sacrificing some Precision on the test data (75% from 80%). This was a difference of one prediction. The
+confusion matrix for the model's test results are shown below.
+
+<img src="images/confusion_matrix.png" width="200" />
+
+[return to TOC](#table-of-contents)
+
+## Key Findings
+
+#### Carbs
+
+The strongest indicator in the model of potential weight loss. When under the carbohydrate threshold (223
+g) the user experienced 74% of their weigh-ins the next day showed weight loss. Vice-Versa, when the user
+was over the threshold (223g), 67% of the weigh-ins next day showed a gain.
+
+<img src="images/rec1_pic1.png" width="200" />
+
+<img src="images/rec1_pic2.png" width="200" />
+
+#### Lack of Sleep
+
+Lack of sleep may contribute to weight gain. In instances when the user was over the carbohydrate
+threshold, and slept less than 6.9hrs, almost 80% of the weigh-ins showed a gain. That's a 12% increase.
+
+<img src="images/rec_2.png" width="200" />
+
+#### Fiber
+
+Fiber may assist in weight loss. In instances when the user was under the carbohydrate
+threshold, but consumed at least 14.75g of Fiber, the occurence of weight loss increased to nearly 82% of the weigh-ins showed a gain. That's an 8% increase.
+
+<img src="images/rec_3.png" width="200" />
+
+#### [return to TOC](#table-of-contents)
+
+## Summary
+This model shows that with tracking the right data we can identify strong indicators towards managing weight. Targeting weight loss days turned out to be an effective way to apply machine learning to health data.
 
 
-## 3. Github Repository
+### Next Steps:
+#### Additional Data
+We need to continue to refine the model to boost performance. Typically, over 1000 observations are needed to have confidence in a model. We only had 195 observations, nearly 30% of which had gaps in weight data. With more data we can optimize the success we already have.
 
-To execute this project, a github repository is utilized for public viewing and collaboration
+#### Test UI Prompts
+Recommendations for course correction are only as effective as how the message is delivered. For carb tracking, perhaps the user could monitor their carb intake through the day and receive a notification when intake is high. With Fiber, the user could be pinged at the end of the day if their fiber intake is low. When carb intake increases, the user could be reminded to get enough sleep.
+
+#### Try Calorie Counting
+Increase awareness around calorie counting. It's hard at first but then it becomes second nature. It's very helpful to track what one eats.
+
+
+## Github Repository
+
+To execute this project, a github repository is utilized for public viewing and collaboration. The source file for the original data is not available.
 
 You can see the following files stored in the github repository.
 
-* *data* <a id='data'></a> - Folder containg the Movielens(100k ratings) files
-    * [links.csv](data/links.csv)
-    * [movies.csv](data/movies.csv)
-    * [ratings.csv](data/ratings.csv)
-    * [tags.csv](data/tags.csv)
+* *content* <a id='data'></a> - Folder containg process personal health data files
+    * [merge_health_4_25.csv](content/guess-my-weight-4-25/merge_health_4_25.csv)
 
 * *Images* - Folder containing the image files used in the Notebook, Presentation, and README file
+
+* *PDFs* - Folder containing the pdf versions of the Slides, the Notebook, and Presentation
+
+* *pre_kaggle* - Folder containing previous revisions of different files
             
 * [README](README.md) the currently file you're reading with descriptions about the coding file
 
 * [.gitignore](.gitignore) - git ignore file 
 
-* [Movie Recommendation Systems Notebook](movie_recommendation_system.ipynb) - Notebook with Python analysis
+* [guess_my_weight_notebook](guess_my_weight_notebook-6-8.ipynb) - Notebook with Python analysis
+
+#### [return to TOC](#table-of-contents)
+
+
+
+
+
+
+
+
 
 ## 4. Data Approach
 
@@ -43,12 +192,7 @@ This project uses the Movielens dataset from the [GroupLens](https://grouplens.o
 
 The website notes that "This dataset (ml-latest-small) describes 5-star rating and free-text tagging activity from MovieLens, a movie recommendation service. It contains 100836 ratings and 3683 tag applications across 9,742 movies. These data were created by 610 users between March 29, 1996 and September 24, 2018. This dataset was generated on September 26, 2018. Users were selected at random for inclusion. All selected users had rated at least 20 movies. No demographic information is included. Each user is represented by an id, and no other information is provided."
 
-The data are contained in the following files:
 
-* [links.csv](data/links.csv)
-* [movies.csv](data/movies.csv)
-* [ratings.csv](data/ratings.csv)
-* [tags.csv](data/tags.csv)
 
 ### Recommender Implentation
 
