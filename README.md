@@ -4,24 +4,6 @@
 <img src="images/guess_your_weight.gif" width="400" height="400" />
 </p>
 
-
-<iframe title="Guess_my_weight_video" width="1140" height="541.25" src="https://www.loom.com/share/40015eac0c7e4627be196e34c1bf0b94?sid=9b9998dd-7bae-4b25-bdee-bd271e43a00c" frameborder="0" allowFullScreen="true"></iframe>
-
-<iframe title="Guess_my_weight_demo" width="1140" height="541.25" src="https://app.powerbi.com/reportEmbed?reportId=c82c4553-db0f-4873-8f13-4bfa28d103de&autoAuth=true&ctid=b593f38e-55cd-4a7e-a1f5-2c8011a7c57d" frameborder="0" allowFullScreen="true"></iframe>
-
-## Table of Contents TOC
-[Overview](#overview)<br />
-[Google Colab Instruction](#google-colab-instructions)<br />
-[Business Case](#business-case)<br />
-[Data Understanding](#data-understanding)<br />
-[Data Preparation](#data-preparation)<br />
-[Modeling](#modeling)<br />
-[Evaluation](#evaluation)<br />
-[Key Findings](#evaluation)<br />
-[Summary](#summary)<br />
-[Github Repository](#github-repository)<br />
-
-
 ## Overview
 Health and Wellness is a $142 billion dollar industry designed to help people managed their weight. This
 model is intended as a feature to guide users tracking lifestyle data (diet, exercise, sleep) with
@@ -32,7 +14,24 @@ acheiving a minimum fiber intake around 14.5 grams as well. Conversely, at over 
 the weigh-ins showed a gain. This increased to 79 percent when less than 6.9 hrs of sleep was recorded in
 addition to the carb threshold. Based on these findings, it's recommended that these analytics be used to
 prompt/guide users through out the day to course correct on encourage certain habits.
-<br />[return to TOC](#table-of-contents-TOC)
+<br />
+
+## Quick Links
+Click here for a [Video Demo](https://www.loom.com/share/40015eac0c7e4627be196e34c1bf0b94?sid=9b9998dd-7bae-4b25-bdee-bd271e43a00c). 
+Click here for [POWER BI Report](https://app.powerbi.com/reportEmbed?reportId=c82c4553-db0f-4873-8f13-4bfa28d103de&autoAuth=true&ctid=b593f38e-55cd-4a7e-a1f5-2c8011a7c57d).
+
+
+## Table of Contents TOC
+[Google Colab Instruction](#google-colab-instructions)<br />
+[Business Case](#business-case)<br />
+[Data Understanding](#data-understanding)<br />
+[Data Preparation](#data-preparation)<br />
+[Modeling](#modeling)<br />
+[Evaluation](#evaluation)<br />
+[Key Findings](#evaluation)<br />
+[Summary](#summary)<br />
+[Github Repository](#github-repository)<br />
+
 
 ## Google Colab Instructions
 To run this notebook, you'll need a Kaggle log-in and web access to [Google Colab and link to this notebook](https://colab.research.google.com/github/bennettandrewm/guess_my_weight/blob/master/guess_my_weight_notebook-6-8.ipynb). Google Colab is a free, user-friendly platform to run software, specifically data models. Kaggle is a [website](https://www.kaggle.com/) popular with the data industry that hosts databases and runs data analytics competition. To access the [database](https://www.kaggle.com/datasets/andrewmbennett/guess-my-weight-4-25) for this model, you
