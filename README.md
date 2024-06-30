@@ -4,6 +4,11 @@
 <img src="images/guess_your_weight.gif" width="400" height="400" />
 </p>
 
+
+<iframe title="Guess_my_weight_video" width="1140" height="541.25" src="https://www.loom.com/share/40015eac0c7e4627be196e34c1bf0b94?sid=9b9998dd-7bae-4b25-bdee-bd271e43a00c" frameborder="0" allowFullScreen="true"></iframe>
+
+<iframe title="Guess_my_weight_demo" width="1140" height="541.25" src="https://app.powerbi.com/reportEmbed?reportId=c82c4553-db0f-4873-8f13-4bfa28d103de&autoAuth=true&ctid=b593f38e-55cd-4a7e-a1f5-2c8011a7c57d" frameborder="0" allowFullScreen="true"></iframe>
+
 ## Table of Contents TOC
 [Overview](#overview)<br />
 [Google Colab Instruction](#google-colab-instructions)<br />
