@@ -5,15 +5,9 @@
 </p>
 
 ## Overview
-Health and Wellness is a $142 billion dollar industry designed to help people managed their weight. This
-model is intended as a feature to guide users tracking lifestyle data (diet, exercise, sleep) with
-recommendations to target weight loss. A machine learning Decision Tree algorithm analyzed captured lifestyle data and fine-tuned to consider precision and accuracy metrics. The model determined a Carbohydrate
-threshold, or Carb Number, which corresponded to next day weight loss or gain. At under 221g (for this
-user) nearly 74 percent of the next days weigh-in showed a loss. This increased to nearly 82% when
-acheiving a minimum fiber intake around 14.5 grams as well. Conversely, at over 221g, nearly 66 percent of
-the weigh-ins showed a gain. This increased to 79 percent when less than 6.9 hrs of sleep was recorded in
-addition to the carb threshold. Based on these findings, it's recommended that these analytics be used to
-prompt/guide users through out the day to course correct on encourage certain habits.
+Health and Wellness is a $142 billion dollar industry providing solutions and guidance for a healthy lifestyle. A major component of that is weight management. This project contains a model to predict next day weight loss (i.e. whether the reading on the scale decreased from the previous days weigh-in). It's intended for use in calorie counting appz to recommended corrective action during the day based on lifestyle data (diet, exercise, and sleep). This model tested seven different algorithms trained on captured lifestyle data (of my personal health data) and fine-tuned to consider precision and accuracy metrics. It determined that a Carbohydrate threshold, or Carb Number, was the biggest predictor of next day weight loss or gain. At under 221g (for this user) nearly 74 percent of the next day's weigh-ins showed a loss. This increased to nearly 82% when
+acheiving a minimum fiber intake around 14.5 grams. Conversely, at over 223g, nearly 66 percent of
+the next day weigh-ins showed a gain. This increased to 79 percent when less than 6.9 hrs of sleep were recorded. Based on these findings, it's recommended that these analytics be used to prompt/guide users through out the day to encourage certain habits and/or course corrections, and that this feature should be further develop to test over a wider audience and integrated into a lifestyle app.
 <br />
 
 ## Quick Links
@@ -28,13 +22,13 @@ Click here for [POWER BI Report](https://app.powerbi.com/reportEmbed?reportId=c8
 [Data Preparation](#data-preparation)<br />
 [Modeling](#modeling)<br />
 [Evaluation](#evaluation)<br />
-[Key Findings](#evaluation)<br />
+[Key Findings](#key-findings)<br />
 [Summary](#summary)<br />
 [Github Repository](#github-repository)<br />
 
 
 ## Google Colab Instructions
-To run this notebook, you'll need a Kaggle log-in and web access to [Google Colab and link to this notebook](https://colab.research.google.com/github/bennettandrewm/guess_my_weight/blob/master/guess_my_weight_notebook-6-8.ipynb). Google Colab is a free, user-friendly platform to run software, specifically data models. Kaggle is a [website](https://www.kaggle.com/) popular with the data industry that hosts databases and runs data analytics competition. To access the [database](https://www.kaggle.com/datasets/andrewmbennett/guess-my-weight-4-25) for this model, you
+To run this code in this notebook, you'll need a Kaggle log-in and web access to [Google Colab and link to this notebook](https://colab.research.google.com/github/bennettandrewm/guess_my_weight/blob/master/guess_my_weight_notebook-6-8.ipynb). Google Colab is a free, user-friendly platform to run software, specifically data models. Kaggle is a [website](https://www.kaggle.com/) popular with the data industry that hosts databases and runs data analytics competition. To access the [database](https://www.kaggle.com/datasets/andrewmbennett/guess-my-weight-4-25) for this model, you
 will need to create a Kaggle account and follow the instructions to download your 'token' and 'key'. This
 model will prompt you to have that information.
 <br />[return to TOC](#table-of-contents-TOC)
@@ -45,18 +39,15 @@ According to a CDC study, the obesity prevalence rate in the US was 42 percent i
 Wellness industry, valued at around $142 billion, has a plethora of systems, apps, and protocols to address
 this, yet it's still a problem. On a human level, we all know that managing our weight is both critical to health
 and happiness but also incredible challenging. The average person has dieted over 6 times in their life,
-according to a survey by the Mayo Clinic. There's a demand among users as well as a basic human earn to
-feel in control of our health. Creating additional, more intuitive tools to manage weight loss is a vast
-importance.
+according to a survey by the Mayo Clinic. There's a demand among consumers as well as a basic human yearn to
+feel in control of our health. Creating additional, more intuitive tools to manage weight loss is critically important. 
 
-In this model, we focus on a small short term goals to determine if daily diet, exercise, and sleep goals can
-impact your weigh-in the next day. To simplify this task, we'll utilize binary prediction, either weight loss or
-weight gain, to determine if the sum of these daily habits to determine how they predicted this binary
+In this model, we focus on the impact of small, short term goals (daily diet, exercise, and sleep) on next-day weigh-ins. To simplify this task, we utilize binary prediction, either weight loss or weight gain, to determine if the sum of these daily habits predict this binary
 outcome.
 <br />[return to TOC](#table-of-contents-TOC)
 
 ## Data Understanding
-The data source for this analysis is my personal health information. That data was download from my smart device to a local setting, where it was pre-processed, formatted, and uploaded to [Kaggle](https://www.kaggle.com/datasets/andrewmbennett/guess-my-weight-4-25) to made available pubically. You can also find it in this github repository. Follow [instructions](#github-repository) below. 
+The data source for this analysis is my personal health information. That data was download from my smart device to a local setting, where it was pre-processed, formatted, and uploaded to [Kaggle](https://www.kaggle.com/datasets/andrewmbennett/guess-my-weight-4-25) for public use. It can also be found in this github repository. Follow [instructions](#github-repository) below. 
 <br />[return to TOC](#table-of-contents-TOC)
 
 The data can be found in the following locations:
@@ -64,7 +55,7 @@ The data can be found in the following locations:
 * [Kaggle](https://www.kaggle.com/datasets/andrewmbennett/guess-my-weight-4-25)
 * [THis Repository](content/guess-my-weight-4-25/merge_health_4_25.csv)
 
-Over the course of 6 months, I lost approximately 20 lbs. Tracking my calories and weight was a big part of it, as well data captured from my devices passively, such as workouts, heart rate, sleep, etc. You can see the weigh-in data here.
+Over the course of 6 months, I lost approximately 20 lbs. Tracking my calories and weight was a big part of it, as well data captured from my devices passively, such as workouts, heart rate, sleep, etc. The weigh-in data is here. 
 
 <p align="center">
 <img src="images/daily_weigh_in.png"/>
@@ -72,7 +63,7 @@ Over the course of 6 months, I lost approximately 20 lbs. Tracking my calories a
 
 ## Data Preparation
 The model aims to predict whether a loser lost weight. The wiegh-in data is used to establish whether the
-user gained or lost weight from the previous day's weigh-in. This was achieved through differencing, and the
+user (me) gained or lost weight from the previous day's weigh-in. This was achieved through differencing, and the
 data was verified for stationality to ensure there was no correlation with time (beyond the previous day). To
 understand the data in terms of weight gain days, see the below graph.
 <br />[return to TOC](#table-of-contents-TOC)
@@ -81,22 +72,23 @@ understand the data in terms of weight gain days, see the below graph.
 <img src="images/weight_days.png"/>
 </p>
 
-Prior to modeling, there were concerns regarding correlation. PCA and Correlations were study. Due to these
-concerns, the feature data we divided into segments based on a data heirarchy. A schematic can be seen
+Prior to modeling, there were concerns regarding correlation. PCA and Correlations were studied and due to these concerns, the feature data we divided into segments based on a data heirarchy. A schematic can be seen
 below.
 
 <p align="center">
 <img src="images/data_heirarchy.png"/>
 </p>
 
+This mitigates some of the correlation between say a macro category like Carbs (parents) and it's children categories (sugar, for instance).
+
 ## Modeling
 In order to select the best model, we surveyed a variety of traditional algorithms and use different feature
 segments (level 1, level 2, and level 3). KNN, Logistic Regression, Decision Tree, Naive Bayes, SVM, and
-Neural Network models were scored in a table using evaluation metrics. Of all of the metrics, precision was
+Neural Network models were utilized and their evaluation metrics scored in a table for comparison. Of all of the metrics, precision was
 given the highest preference, second was accuracy. Because we want to predict weight loss, we have a
-strong emphasis on getting True Positives corret! We want to recommend to users with confidence to lose
+strong emphasis on getting True Positives correct. We want to recommend to users with confidence to lose
 weight. Accuracy is secondary but still matters, because we are interested in True Negatives, namely,
-predicting weight gain accurately as well.
+predicting weight gain.
 <br />[return to TOC](#table-of-contents-TOC)
 
 <p align="center">
@@ -128,8 +120,7 @@ confusion matrix for the model's test results are shown below.
 
 #### Carbs
 
-The strongest indicator in the model of potential weight loss. When under the carbohydrate threshold (223
-g) the user experienced 74% of their weigh-ins the next day showed weight loss. Vice-Versa, when the user
+Carbs, for this user's lifestyle, was the strongest indicator in the model of potential weight loss. When under the carbohydrate threshold (223g) the user experienced 74% of their weigh-ins the next day showed weight loss. Vice-Versa, when the user
 was over the threshold (223g), 67% of the weigh-ins next day showed a gain.
 
 <img src="images/rec1_pic_1.png"/>
@@ -139,7 +130,7 @@ was over the threshold (223g), 67% of the weigh-ins next day showed a gain.
 #### Lack of Sleep
 
 Lack of sleep may contribute to weight gain. In instances when the user was over the carbohydrate
-threshold, and slept less than 6.9hrs, almost 80% of the weigh-ins showed a gain. That's a 12% increase.
+threshold, and slept less than 6.9hrs, almost 80% of the weigh-ins showed a gain. That's a 13% increase.
 
 <img src="images/rec2.jpeg"/>
 
