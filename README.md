@@ -5,12 +5,13 @@
 </p>
 
 ## Overview
-Health and Wellness is a $142 billion dollar industry providing solutions and guidance for a healthy lifestyle. A major component of that is weight management. This project contains a model to predict next day weight loss (i.e. whether the reading on the scale decreased from the previous days weigh-in). It's intended for use in calorie counting appz to recommended corrective action during the day based on lifestyle data (diet, exercise, and sleep). This model tested seven different algorithms trained on captured lifestyle data (of my personal health data) and fine-tuned to consider precision and accuracy metrics. It determined that a Carbohydrate threshold, or Carb Number, was the biggest predictor of next day weight loss or gain. At under 221g (for this user) nearly 74 percent of the next day's weigh-ins showed a loss. This increased to nearly 82% when
+Health and Wellness is a $142 billion dollar industry providing solutions and guidance for a healthy lifestyle. A major component of that is weight management. This project contains a model to predict next day weight loss (i.e. whether the reading on the scale decreased from the previous days weigh-in). It's intended for use in calorie counting apps to recommend corrective action during the day based on lifestyle data (diet, exercise, and sleep). This model used seven different algorithms trained on captured lifestyle data (of my personal health data) and fine-tuned to consider precision and accuracy metrics. It determined that a Carbohydrate threshold, or Carb Number, was the biggest predictor of next day weight loss or gain. At under 223g (for this user) nearly 74 percent of the next day's weigh-ins showed a loss. This increased to nearly 82% when
 acheiving a minimum fiber intake around 14.5 grams. Conversely, at over 223g, nearly 66 percent of
-the next day weigh-ins showed a gain. This increased to 79 percent when less than 6.9 hrs of sleep were recorded. Based on these findings, it's recommended that these analytics be used to prompt/guide users through out the day to encourage certain habits and/or course corrections, and that this feature should be further develop to test over a wider audience and integrated into a lifestyle app.
+the next day weigh-ins showed a gain. This increased to 79 percent when less than 6.9 hrs of sleep were recorded. Based on these findings, small, daily metrics can impact weight loss/gain. These analytics can be used to prompt or guide users through out the day to encourage certain habits and/or course corrections. This feature should be developed further to test over a wider audience and integrate into a lifestyle app.
 <br />
 
 ## Quick Links
+Click here for the [deck](pdfs/presentation.pdf)
 Click here for a [Video Demo](https://www.loom.com/share/40015eac0c7e4627be196e34c1bf0b94?sid=9b9998dd-7bae-4b25-bdee-bd271e43a00c). 
 Click here for [POWER BI Report](https://app.powerbi.com/reportEmbed?reportId=c82c4553-db0f-4873-8f13-4bfa28d103de&autoAuth=true&ctid=b593f38e-55cd-4a7e-a1f5-2c8011a7c57d).
 
