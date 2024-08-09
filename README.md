@@ -5,15 +5,13 @@
 </p>
 
 ## Overview
-Health and Wellness is a $142 billion dollar industry providing solutions and guidance for a healthy lifestyle. A major component of that is weight management. This project contains a model to predict next day weight loss (i.e. whether the reading on the scale decreased from the previous days weigh-in). It's intended for use in calorie counting apps to recommend corrective action during the day based on lifestyle data (diet, exercise, and sleep). This model used seven different algorithms trained on captured lifestyle data (of my personal health data) and fine-tuned to consider precision and accuracy metrics. It determined that a Carbohydrate threshold, or Carb Number, was the biggest predictor of next day weight loss or gain. At under 223g (for this user) nearly 74 percent of the next day's weigh-ins showed a loss. This increased to nearly 82% when
+Health and Wellness is a $142 billion dollar industry encompassing health, fitness, nutrition, appearance, sleep and mindfulness. A major component of this industry is weight loss, which is related to both chronic physical disease and  mental health. This project contains a model to predict next day weight loss (i.e. whether the reading on the scale is less than the previous day's weigh-in). It's intended for use in calorie counting apps to recommend corrective action, focusing on small, achievable daily goals. This model used seven different algorithms that were trained on captured lifestyle data (my personal diet, exercise, and sleep data) and fine-tuned to consider precision and accuracy metrics. It determined that a Carbohydrate threshold, or Carb Number, was the biggest predictor of next day weight loss or gain. At under 223g (for this user) nearly 74 percent of the next day's weigh-ins showed a loss. This increased to nearly 82% when
 acheiving a minimum fiber intake around 14.5 grams. Conversely, at over 223g, nearly 66 percent of
 the next day weigh-ins showed a gain. This increased to 79 percent when less than 6.9 hrs of sleep were recorded. Based on these findings, small, daily metrics can impact weight loss/gain. These analytics can be used to prompt or guide users through out the day to encourage certain habits and/or course corrections. This feature should be developed further to test over a wider audience and integrate into a lifestyle app.
 <br />
 
 ## Quick Links
 Click here for the [deck](pdfs/presentation.pdf)
-Click here for a [Video Demo](https://www.loom.com/share/40015eac0c7e4627be196e34c1bf0b94?sid=9b9998dd-7bae-4b25-bdee-bd271e43a00c). 
-Click here for [POWER BI Report](https://app.powerbi.com/reportEmbed?reportId=c82c4553-db0f-4873-8f13-4bfa28d103de&autoAuth=true&ctid=b593f38e-55cd-4a7e-a1f5-2c8011a7c57d).
 
 
 ## Table of Contents TOC
@@ -121,7 +119,7 @@ confusion matrix for the model's test results are shown below.
 
 #### Carbs
 
-Carbs, for this user's lifestyle, was the strongest indicator in the model of potential weight loss. When under the carbohydrate threshold (223g) the user experienced 74% of their weigh-ins the next day showed weight loss. Vice-Versa, when the user
+Carbs, for this user's lifestyle, was the strongest indicator in the model of potential weight loss. When under the carbohydrate threshold (223g), 74% of their weigh-ins the next day showed weight loss. Vice-Versa, when the user
 was over the threshold (223g), 67% of the weigh-ins next day showed a gain.
 
 <img src="images/rec1_pic_1.png"/>
@@ -130,7 +128,7 @@ was over the threshold (223g), 67% of the weigh-ins next day showed a gain.
 
 #### Lack of Sleep
 
-Lack of sleep may contribute to weight gain. In instances when the user was over the carbohydrate
+Lack of sleep may also contribute to weight gain. In instances when the user was over the carbohydrate
 threshold, and slept less than 6.9hrs, almost 80% of the weigh-ins showed a gain. That's a 13% increase.
 
 <img src="images/rec2.jpeg"/>
